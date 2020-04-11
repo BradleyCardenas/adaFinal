@@ -112,7 +112,7 @@ public class interfazLogin {
 				if(User.equals("cocinero") && clave.equals("cocinero")) {
 					JOptionPane.showMessageDialog(null, "Bienvenido cocinero");
 				}else {
-					JOptionPane.showMessageDialog(null, "Acceso denegado:\nFavor de ingresar un usuario o contraseña correctos");
+					JOptionPane.showMessageDialog(null, "Acceso denegado:\nFavor de ingresar un usuario o contraseña correctos!");
 					textUsuario.setText("");
 					passwordContraseña.setText("");
 					textUsuario.grabFocus();
