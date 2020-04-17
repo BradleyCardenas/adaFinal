@@ -1,15 +1,14 @@
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
-import javax.swing.JLayeredPane;
+import javax.swing.border.EmptyBorder;
 
-public class menu {
+public class Menus extends JFrame {
 
-	private JFrame frmMenu;
+	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
@@ -18,8 +17,8 @@ public class menu {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					menu window = new menu();
-					window.frmMenu.setVisible(true);
+					Menus frame = new Menus();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -28,39 +27,36 @@ public class menu {
 	}
 
 	/**
-	 * Create the application.
+	 * Create the frame.
 	 */
-	public menu() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frmMenu = new JFrame();
-		frmMenu.setBounds(100, 100, 750, 444);
-		frmMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmMenu.getContentPane().setLayout(null);
+	public Menus() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 750, 444);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
 		JButton btnMesas = new JButton("Mesas");
 		btnMesas.setBounds(6, 84, 129, 77);
-		frmMenu.getContentPane().add(btnMesas);
+		contentPane.add(btnMesas);
 		
 		JButton btnPedidos = new JButton("Pedidos");
 		btnPedidos.setBounds(6, 6, 129, 77);
-		frmMenu.getContentPane().add(btnPedidos);
+		contentPane.add(btnPedidos);
 		
 		JButton btnHistorial = new JButton("Historial");
 		btnHistorial.setBounds(6, 162, 129, 77);
-		frmMenu.getContentPane().add(btnHistorial);
+		contentPane.add(btnHistorial);
 		
 		JButton btnConfig = new JButton("Configuración");
 		btnConfig.setBounds(6, 339, 129, 77);
-		frmMenu.getContentPane().add(btnConfig);
+		contentPane.add(btnConfig);
 		
 		JButton btnAdmin = new JButton("Administración");
 		btnAdmin.setBounds(6, 240, 129, 77);
-		frmMenu.getContentPane().add(btnAdmin);
+		contentPane.add(btnAdmin);
+		
+		
 	}
 }
