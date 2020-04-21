@@ -77,7 +77,6 @@ public class Login extends JFrame {
 		
 		JButton btnIniciarSesion = new JButton("Iniciar sesión");
 		btnIniciarSesion.setBackground(new Color(255, 255, 255));
-		btnIniciarSesion.setForeground(new Color(0, 0, 0));
 		btnIniciarSesion.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyCode()==KeyEvent.VK_ENTER){
