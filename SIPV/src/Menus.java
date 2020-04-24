@@ -18,6 +18,10 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class Menus extends JFrame {
 
@@ -56,21 +60,37 @@ public class Menus extends JFrame {
 		/* Inicio */
 		JPanel panelInicio = new JPanel();
 		panelInicio.setBounds(147, 6, 597, 410);
+		panelInicio.setBackground(Color.WHITE);
 		contentPane.add(panelInicio);
+		panelInicio.setLayout(null);
 		
-		JLabel lblInicio1 = new JLabel("Inicio");
-		lblInicio1.setBounds(32, 29, 61, 16);
+		JLabel lblInicio1 = new JLabel("INICIO");
+		lblInicio1.setFont(new Font("Arial Hebrew Scholar", Font.PLAIN, 22));
+		lblInicio1.setBounds(28, 6, 85, 61);
+		panelInicio.setLayout(null);
 		panelInicio.add(lblInicio1);
 		
-		JList list = new JList();
-		list.setBounds(221, 113, 136, 26);
-		panelInicio.add(list);
+		JLabel lblBienvenido = new JLabel("Bienvenido ");
+		lblBienvenido.setFont(new Font("Arial Hebrew Scholar", Font.PLAIN, 17));
+		lblBienvenido.setBounds(248, 72, 106, 52);
+		panelInicio.add(lblBienvenido);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("/Users/bradleycardenas/git/adaFinal/recursos/Minicio.JPG"));
+		lblNewLabel.setBounds(106, 137, 375, 267);
+		panelInicio.add(lblNewLabel);
+		
+		JLabel lblSeleccioneUnaDe = new JLabel("Seleccione una de las ventas para comenzar a trabajar ");
+		lblSeleccioneUnaDe.setFont(new Font("Arial Hebrew Scholar", Font.PLAIN, 17));
+		lblSeleccioneUnaDe.setBounds(86, 107, 455, 52);
+		panelInicio.add(lblSeleccioneUnaDe);
 		
 		/* Mesas */
 		JPanel panelMesas = new JPanel();
-		panelMesas.setLayout(null);
 		panelMesas.setBounds(147, 6, 597, 410);
+		panelMesas.setLayout(null);
 		contentPane.add(panelMesas);
+		panelMesas.setVisible(false);
 		
 		JLabel lblMesas = new JLabel("label");
 		lblMesas.setBounds(32, 29, 61, 16);
@@ -80,12 +100,12 @@ public class Menus extends JFrame {
 		listMesas.setBounds(221, 113, 136, 26);
 		panelMesas.add(listMesas);	
 			
-			
 		/* Pedidos */
 		JPanel panelPedidos = new JPanel();
 		panelPedidos.setLayout(null);
 		panelPedidos.setBounds(147, 6, 597, 410);
 		contentPane.add(panelPedidos);
+		panelPedidos.setVisible(false);
 		
 		JLabel lblPedidos = new JLabel("label");
 		lblPedidos.setBounds(32, 29, 61, 16);
@@ -100,21 +120,22 @@ public class Menus extends JFrame {
 		panelHistorial.setLayout(null);
 		panelHistorial.setBounds(147, 6, 597, 410);
 		contentPane.add(panelHistorial);
+		panelHistorial.setVisible(false);
+		
 		
 		/* Configuracion */
 		JPanel panelConfig = new JPanel();
 		panelConfig.setLayout(null);
 		panelConfig.setBounds(147, 6, 597, 410);
 		contentPane.add(panelConfig);
+		panelConfig.setVisible(false);
 	
+		
 		/* Admin */
 		JPanel panelAdmin = new JPanel();
-		panelInicio.setLayout(null);
 		panelAdmin.setBounds(147, 6, 597, 410);
 		contentPane.add(panelAdmin);
-		
-		
-		
+		panelAdmin.setVisible(false);
 	
 	/*
 	 * Botones principales
@@ -131,7 +152,7 @@ public class Menus extends JFrame {
 				
 			}
 		});
-		btnMesas.setBounds(6, 84, 129, 77);
+		btnMesas.setBounds(6, 95, 129, 77);
 		contentPane.add(btnMesas);
 		
 		
@@ -147,7 +168,7 @@ public class Menus extends JFrame {
 				
 			}
 		});
-		btnPedidos.setBounds(6, 6, 129, 77);
+		btnPedidos.setBounds(6, 16, 129, 77);
 		contentPane.add(btnPedidos);
 		
 		JButton btnHistorial = new JButton("Historial");
@@ -162,7 +183,7 @@ public class Menus extends JFrame {
 					
 			}
 		});
-		btnHistorial.setBounds(6, 162, 129, 77);
+		btnHistorial.setBounds(6, 173, 129, 77);
 		contentPane.add(btnHistorial);
 		
 		JButton btnConfig = new JButton("Configuración");
@@ -177,7 +198,7 @@ public class Menus extends JFrame {
 				
 			}
 		});
-		btnConfig.setBounds(6, 339, 129, 77);
+		btnConfig.setBounds(6, 328, 129, 77);
 		contentPane.add(btnConfig);
 		
 		JButton btnAdmin = new JButton("Administración");
@@ -192,10 +213,9 @@ public class Menus extends JFrame {
 				
 			}
 		});
-		btnAdmin.setBounds(6, 240, 129, 77);
+		btnAdmin.setBounds(6, 250, 129, 77);
 		contentPane.add(btnAdmin);
 		
 		
 	}
-	
 }
