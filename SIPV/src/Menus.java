@@ -85,20 +85,6 @@ public class Menus extends JFrame {
 		lblSeleccioneUnaDe.setBounds(86, 107, 455, 52);
 		panelInicio.add(lblSeleccioneUnaDe);
 		
-		/* Mesas */
-		JPanel panelMesas = new JPanel();
-		panelMesas.setBounds(147, 6, 597, 410);
-		panelMesas.setLayout(null);
-		contentPane.add(panelMesas);
-		panelMesas.setVisible(false);
-		
-		JLabel lblMesas = new JLabel("label");
-		lblMesas.setBounds(32, 29, 61, 16);
-		panelMesas.add(lblMesas);
-		
-		JList listMesas = new JList();
-		listMesas.setBounds(221, 113, 136, 26);
-		panelMesas.add(listMesas);	
 			
 		/* Pedidos */
 		JPanel panelPedidos = new JPanel();
