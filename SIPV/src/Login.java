@@ -20,7 +20,7 @@ import java.awt.Color;
 public class Login extends JFrame {
 
 	private JPanel contentPane;
-	private JPasswordField passwordContraseña;
+	private JPasswordField passwordContrase�a;
 	private JTextField textUsuario;
 
 	/**
@@ -64,10 +64,10 @@ public class Login extends JFrame {
 		lblNewLabel_2.setBounds(47, 179, 85, 16);
 		getContentPane().add(lblNewLabel_2);
 		
-		passwordContraseña = new JPasswordField();
-		passwordContraseña.setToolTipText("Combinación de letras y simbolos que conforman su contraseña");
-		passwordContraseña.setBounds(47, 197, 248, 26);
-		getContentPane().add(passwordContraseña);
+		passwordContrase�a = new JPasswordField();
+		passwordContrase�a.setToolTipText("Combinación de letras y simbolos que conforman su contraseña");
+		passwordContrase�a.setBounds(47, 197, 248, 26);
+		getContentPane().add(passwordContrase�a);
 		
 		textUsuario = new JTextField();
 		textUsuario.setToolTipText("Nombre de usuario");
@@ -107,7 +107,7 @@ public class Login extends JFrame {
 	*/
 	private void iniciarLogin() {
 		String User = textUsuario.getText();
-		char[] passC = passwordContraseña.getPassword();
+		char[] passC = passwordContrase�a.getPassword();
 		String clave = new String(passC);
 		
 		if(User.equals("admin") && clave.equals("admin")) {
@@ -130,7 +130,7 @@ public class Login extends JFrame {
 				}else {
 					JOptionPane.showMessageDialog(null, "Acceso denegado:\nFavor de ingresar un usuario o contraseña correctos!");
 					textUsuario.setText("");
-					passwordContraseña.setText("");
+					passwordContrase�a.setText("");
 					textUsuario.grabFocus();
 				}
 	}
