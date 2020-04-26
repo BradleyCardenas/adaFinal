@@ -1,19 +1,14 @@
-import java.awt.Container;
 
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.text.AbstractDocument.Content;
-import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JTable;
 import java.awt.Font;
 
 public class Mesas extends JPanel {
-	private JTable table;
+	
 
 	/**
 	 * Create the panel.
@@ -21,10 +16,8 @@ public class Mesas extends JPanel {
 	public Mesas() {
 		JPanel panelMesas = new JPanel();
 		panelMesas.setBackground(Color.PINK);
-		panelMesas.setBounds(147, 6, 524, 276);
+		panelMesas.setBounds(147, 6, 597, 410);
 		panelMesas.setLayout(null);
-		Contentpane().add(panelMesas);
-		panelMesas.setVisible(false);
 		
 		JButton btnNewButton = new JButton("Aceptar");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -41,8 +34,4 @@ public class Mesas extends JPanel {
 		
 	}
 
-	private Container Contentpane() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

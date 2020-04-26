@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,8 +19,8 @@ import java.awt.Color;
 public class Login extends JFrame {
 
 	private JPanel contentPane;
-	private JPasswordField passwordContraseña;
 	private JTextField textUsuario;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -51,23 +50,23 @@ public class Login extends JFrame {
 		setContentPane(contentPane);
 		
 		
-		JLabel lblLogin = new JLabel("Iniciar sesión");
+		JLabel lblLogin = new JLabel("Iniciar sesion");
 		lblLogin.setFont(new Font("Geeza Pro", Font.BOLD, 30));
 		lblLogin.setBounds(47, 33, 224, 54);
 		getContentPane().add(lblLogin);
 		
-		JLabel lblNewLabel_1 = new JLabel("Usuario");
+		JLabel lblNewLabel_1 = new JLabel("User");
 		lblNewLabel_1.setBounds(47, 111, 61, 16);
 		getContentPane().add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Contraseña");
+		JLabel lblNewLabel_2 = new JLabel("Password");
 		lblNewLabel_2.setBounds(47, 179, 85, 16);
 		getContentPane().add(lblNewLabel_2);
 		
-		passwordContraseña = new JPasswordField();
-		passwordContraseña.setToolTipText("Combinación de letras y simbolos que conforman su contraseña");
-		passwordContraseña.setBounds(47, 197, 248, 26);
-		getContentPane().add(passwordContraseña);
+		passwordField = new JPasswordField();
+		passwordField.setToolTipText("Combinacion de letras y simbolos que conforman su password");
+		passwordField.setBounds(47, 197, 248, 26);
+		getContentPane().add(passwordField);
 		
 		textUsuario = new JTextField();
 		textUsuario.setToolTipText("Nombre de usuario");
@@ -75,7 +74,7 @@ public class Login extends JFrame {
 		getContentPane().add(textUsuario);
 		textUsuario.setColumns(10);
 		
-		JButton btnIniciarSesion = new JButton("Iniciar sesión");
+		JButton btnIniciarSesion = new JButton("Iniciar sesion");
 		btnIniciarSesion.setBackground(new Color(255, 255, 255));
 		btnIniciarSesion.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
@@ -107,7 +106,7 @@ public class Login extends JFrame {
 	*/
 	private void iniciarLogin() {
 		String User = textUsuario.getText();
-		char[] passC = passwordContraseña.getPassword();
+		char[] passC = passwordField.getPassword();
 		String clave = new String(passC);
 		
 		if(User.equals("admin") && clave.equals("admin")) {
@@ -130,7 +129,7 @@ public class Login extends JFrame {
 				}else {
 					JOptionPane.showMessageDialog(null, "Acceso denegado:\nFavor de ingresar un usuario o contraseÃ±a correctos!");
 					textUsuario.setText("");
-					passwordContraseña.setText("");
+					passwordField.setText("");
 					textUsuario.grabFocus();
 				}
 	}

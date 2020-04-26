@@ -1,27 +1,15 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JInternalFrame;
-import javax.swing.JLayeredPane;
-import javax.swing.JDesktopPane;
-import javax.swing.JTextPane;
-import java.awt.TextArea;
-import javax.swing.JMenuBar;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JSpinner;
-import javax.swing.JTextArea;
-import javax.swing.JLabel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JList;
 import java.awt.Font;
-import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Menus extends JFrame {
 
@@ -84,6 +72,42 @@ public class Menus extends JFrame {
 		lblSeleccioneUnaDe.setFont(new Font("Arial Hebrew Scholar", Font.PLAIN, 17));
 		lblSeleccioneUnaDe.setBounds(86, 107, 455, 52);
 		panelInicio.add(lblSeleccioneUnaDe);
+		
+		
+	/*
+	 * Botones
+	 */
+		JButton btnPedidos = new JButton("Pedidos");
+		btnPedidos.setBounds(6, 17, 129, 70);
+		contentPane.add(btnPedidos);
+		btnPedidos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Pedidos getPedido = new Pedidos();
+				getPedido.setVisible(true);
+			}
+		});
+		
+		JButton btnMesas = new JButton("Mesas");
+		btnMesas.setBounds(6, 100, 129, 70);
+		contentPane.add(btnMesas);
+		btnMesas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Mesas getMesa = new Mesas();
+				getMesa.setVisible(true);
+			}
+		});
+		
+		JButton btnHistorial = new JButton("HIstorial");
+		btnHistorial.setBounds(6, 182, 129, 70);
+		contentPane.add(btnHistorial);
+		
+		JButton btnAdmin = new JButton("Administration");
+		btnAdmin.setBounds(6, 264, 129, 70);
+		contentPane.add(btnAdmin);
+		
+		JButton btnSettings = new JButton("Settings");
+		btnSettings.setBounds(6, 346, 129, 70);
+		contentPane.add(btnSettings);
 	}
 }
 		
