@@ -1,12 +1,11 @@
 import javax.swing.JPanel;
 
-public class Admin extends JPanel {
+public class Historial extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public Admin() {
-		
+	public Historial() {
 
 	}
 

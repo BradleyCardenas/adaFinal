@@ -51,7 +51,7 @@ public class Login extends JFrame {
 		setContentPane(contentPane);
 		
 		
-		JLabel lblLogin = new JLabel("Iniciar sesiÃ³n");
+		JLabel lblLogin = new JLabel("Iniciar sesión");
 		lblLogin.setFont(new Font("Geeza Pro", Font.BOLD, 30));
 		lblLogin.setBounds(47, 33, 224, 54);
 		getContentPane().add(lblLogin);
@@ -60,12 +60,12 @@ public class Login extends JFrame {
 		lblNewLabel_1.setBounds(47, 111, 61, 16);
 		getContentPane().add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("ContraseÃ±a");
+		JLabel lblNewLabel_2 = new JLabel("Contraseña");
 		lblNewLabel_2.setBounds(47, 179, 85, 16);
 		getContentPane().add(lblNewLabel_2);
 		
 		passwordContraseña = new JPasswordField();
-		passwordContraseña.setToolTipText("CombinaciÃ³n de letras y simbolos que conforman su contraseÃ±a");
+		passwordContraseña.setToolTipText("Combinación de letras y simbolos que conforman su contraseña");
 		passwordContraseña.setBounds(47, 197, 248, 26);
 		getContentPane().add(passwordContraseña);
 		
@@ -75,7 +75,7 @@ public class Login extends JFrame {
 		getContentPane().add(textUsuario);
 		textUsuario.setColumns(10);
 		
-		JButton btnIniciarSesion = new JButton("Iniciar sesiÃ³n");
+		JButton btnIniciarSesion = new JButton("Iniciar sesión");
 		btnIniciarSesion.setBackground(new Color(255, 255, 255));
 		btnIniciarSesion.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
