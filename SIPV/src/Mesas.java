@@ -22,11 +22,10 @@ public class Mesas extends JPanel {
 	
 	public Mesas() {
 	
-	
-
-	    JPanel panelMesas = new JPanel();
+		JPanel panelMesas = new JPanel();
 		panelMesas.setBackground(Color.WHITE);
 		panelMesas.setBounds(147, 6, 597, 410);
+		panelMesas.setVisible(true);
 		
 		JButton btnNewButton = new JButton("Aceptar");
 		btnNewButton.setBounds(353, 281, 89, 23);

@@ -82,7 +82,11 @@ public class Menus extends JFrame {
 		contentPane.add(btnPedidos);
 		btnPedidos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				panelInicio.setVisible(false);
 				Pedidos getPedido = new Pedidos();
+				contentPane.add(getPedido);
+				getPedido.setBounds(147, 6, 597, 410);
+				getPedido.setBackground(Color.WHITE);
 				getPedido.setVisible(true);
 			}
 		});
@@ -92,8 +96,12 @@ public class Menus extends JFrame {
 		contentPane.add(btnMesas);
 		btnMesas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Mesas getMesa = new Mesas();
-				getMesa.setVisible(true);
+				panelInicio.setVisible(false);
+				Mesas getMesas = new Mesas();
+				contentPane.add(getMesas);
+				getMesas.setBounds(147, 6, 597, 410);
+				getMesas.setVisible(true);
+				
 			}
 		});
 		
