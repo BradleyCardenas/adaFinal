@@ -7,13 +7,43 @@ import javax.swing.JList;
 import javax.swing.JSpinner;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Pedidos extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
+	
+	
+	Pedidos [] ArreBebidas = new Pedidos[] {
+			new Pedidos ("Coca Cola",30),
+			new Pedidos ("Horchata",25),
+			new Pedidos ("Jamaica",20),
+			new Pedidos ("Cerveza",50),
+			new Pedidos ("Agua",15),
+	};
+	        Pedidos objBebida;
+	        
+	Pedidos [] ArreComidas = new Pedidos[] {
+		
+		    new Pedidos ("Pizza al pastor gde",180),
+		    new Pedidos ("Pizza al pastor chica",100),
+		    new Pedidos ("Hamburguesa",50),
+		    new Pedidos ("Hot dog",35),
+		    new Pedidos ("Nachos gde",140),
+		    new Pedidos ("Nachos chico",80),
+		    
+		};
+	        Pedidos objComida;
+			
+		
+
+	
+	
 	public Pedidos() {
+		
 
 		JPanel Pedidos = new JPanel();
 		Pedidos.setBackground(Color.WHITE);
@@ -44,7 +74,7 @@ public class Pedidos extends JPanel {
 		add(spinner);
 		
 		JLabel lblNewLabel_2 = new JLabel("imagen");
-		lblNewLabel_2.setBounds(349, 21, 95, 255);
+		lblNewLabel_2.setBounds(349, 21, 95, 66);
 		add(lblNewLabel_2);
 		
 		JSpinner spinner_1 = new JSpinner();
@@ -56,14 +86,50 @@ public class Pedidos extends JPanel {
 		lblBebidas.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		add(lblBebidas);
 		
-		JComboBox platillos = new JComboBox();
-		platillos.setModel(new DefaultComboBoxModel(new String[] {"Hamburguesa", "Hot Dog", "Torta de asado", "Torta de jam\u00F3n y queso", "Ensalada", "Pizza de pastor"}));
-		platillos.setBounds(26, 117, 140, 22);
-		add(platillos);
+		JComboBox Plati = new JComboBox();
+		Plati.setBounds(26, 117, 140, 22);
+		add(Plati);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Jamaica", "Horchata", "Coca cola", "Limonada", "Agua", "Cerveza"}));
-		comboBox_1.setBounds(26, 188, 140, 22);
-		add(comboBox_1);
+		for (int i=0; i <ArreComidas.length; i++)
+			Plati.addItem(ArreComidas[i]);
+			
+		
+		JComboBox  Bebi = new JComboBox();
+		Bebi.setBounds(26, 188, 140, 22);
+		add(Bebi);
+		
+		for (int i=0; i <ArreBebidas.length; i++)
+		     Bebi.addItem(ArreBebidas[i]);
+		
+		
+		
+		JButton btnAgregar = new JButton("Agregar");
+		btnAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				objComida = (Pedidos) Plati.getSelectedItem();
+			}
+		});
+		
+		
+		btnAgregar.setBounds(340, 117, 89, 23);
+		add(btnAgregar);
+		
+		
+		JButton btnAgregarbeb = new JButton("Agregar");
+		btnAgregarbeb.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				objBebida =(Pedidos) Bebi.getSelectedItem();
+			}
+		});
+		btnAgregarbeb.setBounds(340, 184, 89, 23);
+		add(btnAgregarbeb);
+	}
+
+
+
+
+
+	public Pedidos(String string, int i) {
+		// TODO Auto-generated constructor stub
 	}
 }
