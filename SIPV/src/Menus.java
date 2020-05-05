@@ -91,30 +91,16 @@ public class Menus extends JFrame {
 			}
 		});
 		
-		JButton btnMesas = new JButton("Mesas");
-		btnMesas.setBounds(6, 100, 129, 70);
-		contentPane.add(btnMesas);
-		btnMesas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panelInicio.setVisible(false);
-				Mesas getMesas = new Mesas();
-				contentPane.add(getMesas);
-				getMesas.setBounds(147, 6, 597, 410);
-				getMesas.setVisible(true);
-				
-			}
-		});
-		
 		JButton btnHistorial = new JButton("HIstorial");
-		btnHistorial.setBounds(6, 182, 129, 70);
+		btnHistorial.setBounds(6, 120, 129, 70);
 		contentPane.add(btnHistorial);
 		
 		JButton btnAdmin = new JButton("Administration");
-		btnAdmin.setBounds(6, 264, 129, 70);
+		btnAdmin.setBounds(6, 223, 129, 70);
 		contentPane.add(btnAdmin);
 		
 		JButton btnSettings = new JButton("Settings");
-		btnSettings.setBounds(6, 346, 129, 70);
+		btnSettings.setBounds(6, 330, 129, 70);
 		contentPane.add(btnSettings);
 	}
 }

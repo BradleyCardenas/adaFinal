@@ -4,132 +4,155 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class Pedidos extends JPanel {
 
-	/**
-	 * Create the panel.
+	/*
+	 * Seccion de las bebidas
 	 */
 	
-	
-	Pedidos [] ArreBebidas = new Pedidos[] {
-			new Pedidos ("Coca Cola",30),
-			new Pedidos ("Horchata",25),
-			new Pedidos ("Jamaica",20),
-			new Pedidos ("Cerveza",50),
-			new Pedidos ("Agua",15),
+	alimentos[] arreBebidas = new alimentos[] {
+			new alimentos("Seleccione uno", 0),
+			new alimentos("Coca Cola", 15),
+			new alimentos("SevenUp",15),
+			new alimentos("Manzanita",16),
+			new alimentos("Mirinda", 14)
 	};
-	        Pedidos objBebida;
-	        
-	Pedidos [] ArreComidas = new Pedidos[] {
-		
-		    new Pedidos ("Pizza al pastor gde",180),
-		    new Pedidos ("Pizza al pastor chica",100),
-		    new Pedidos ("Hamburguesa",50),
-		    new Pedidos ("Hot dog",35),
-		    new Pedidos ("Nachos gde",140),
-		    new Pedidos ("Nachos chico",80),
-		    
-		};
-	        Pedidos objComida;
-			
-		
-
+	
+	alimentos objBebida;
+	
+	/*
+	 * Seccion de la comida
+	 */
+	
+	alimentos[] arreComidas = new alimentos[] {
+			new alimentos("Seleccione uno", 0),
+			new alimentos("Sopa Nissin", 20),
+			new alimentos("Filete de pescado",90),
+			new alimentos("Sopa fria",303),
+			new alimentos("Pozole", 20)
+	};
+	
+	alimentos objComida;
+	
+	/*
+	 * Seccion mesas
+	 */
+	mesas[] estudio = new mesas[] {
+			new mesas(1),
+			new mesas(2),
+			new mesas(3),
+			new mesas(4),
+			new mesas(5),
+			new mesas(6),
+			new mesas(7)
+	};
+	
+	mesas objMesas;
 	
 	
 	public Pedidos() {
 		
-
+		/*
+		 * Elementos del Panel
+		 */
 		JPanel Pedidos = new JPanel();
 		Pedidos.setBackground(Color.WHITE);
 		Pedidos.setBounds(147, 6, 597, 410);
 		Pedidos.setLayout(null);
 		setLayout(null);
 		
+		JSpinner spinnerComida = new JSpinner();
+		spinnerComida.setBounds(320, 183, 67, 29);
+		add(spinnerComida);
+		
+		JSpinner spinnerBebida = new JSpinner();
+		spinnerBebida.setBounds(320, 272, 67, 29);
+		add(spinnerBebida);
+		
 		JLabel lblNewLabel = new JLabel("Lista De Pedidos");
-		lblNewLabel.setBounds(26, 11, 229, 29);
-		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblNewLabel.setBounds(33, 44, 333, 61);
+		lblNewLabel.setFont(new Font("Arial Hebrew Scholar", Font.BOLD, 35));
 		add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("Enviar");
-		btnNewButton.setBounds(26, 247, 98, 29);
-		add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("Cancelar");
-		btnNewButton_1.setBounds(157, 247, 98, 29);
-		add(btnNewButton_1);
-		
 		JLabel lblNewLabel_1 = new JLabel("Platillos");
-		lblNewLabel_1.setBounds(26, 82, 61, 21);
+		lblNewLabel_1.setBounds(40, 154, 61, 21);
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		add(lblNewLabel_1);
 		
-		JSpinner spinner = new JSpinner();
-		spinner.setBounds(228, 114, 67, 29);
-		add(spinner);
-		
-		JLabel lblNewLabel_2 = new JLabel("imagen");
-		lblNewLabel_2.setBounds(349, 21, 95, 66);
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon("/Users/bradleycardenas/git/adaFinal/recursos/waiters2.png"));
+		lblNewLabel_2.setBounds(378, 10, 196, 165);
 		add(lblNewLabel_2);
 		
-		JSpinner spinner_1 = new JSpinner();
-		spinner_1.setBounds(228, 181, 67, 29);
-		add(spinner_1);
-		
 		JLabel lblBebidas = new JLabel("Bebidas");
-		lblBebidas.setBounds(26, 157, 61, 21);
+		lblBebidas.setBounds(40, 243, 61, 21);
 		lblBebidas.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		add(lblBebidas);
 		
-		JComboBox Plati = new JComboBox();
-		Plati.setBounds(26, 117, 140, 22);
-		add(Plati);
+		JLabel lblMesaAAtender = new JLabel("Mesa a atender");
+		lblMesaAAtender.setFont(new Font("Times New Roman", Font.PLAIN, 17));
+		lblMesaAAtender.setBounds(442, 216, 119, 37);
+		add(lblMesaAAtender);
 		
-		for (int i=0; i <ArreComidas.length; i++)
-			Plati.addItem(ArreComidas[i]);
+		
+		JComboBox cbxMesas = new JComboBox();
+		cbxMesas.setBounds(442, 249, 106, 37);
+		add(cbxMesas);
+		for (int i=0; i<estudio.length; i++)
+			cbxMesas.addItem(estudio[i].getClave());
+		
+		//Seccion comida
+		JComboBox Platillo = new JComboBox();
+		Platillo.setBounds(63, 187, 215, 22);
+		add(Platillo);
+		for (int i=0; i <arreComidas.length; i++)
+			Platillo.addItem(arreComidas[i].getDescription());
 			
-		
-		JComboBox  Bebi = new JComboBox();
-		Bebi.setBounds(26, 188, 140, 22);
-		add(Bebi);
-		
-		for (int i=0; i <ArreBebidas.length; i++)
-		     Bebi.addItem(ArreBebidas[i]);
-		
-		
-		
-		JButton btnAgregar = new JButton("Agregar");
-		btnAgregar.addActionListener(new ActionListener() {
+		//Seccon bebidas
+		JComboBox Bebidas = new JComboBox();
+		Bebidas.setBounds(63, 276, 215, 22);
+		add(Bebidas);
+		for (int i=0; i <arreBebidas.length; i++)
+		     Bebidas.addItem(arreBebidas[i].getDescription());
+
+		/*
+		 * Botones
+		 */
+		JButton btnEnviar = new JButton("Enviar");
+		btnEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				objComida = (Pedidos) Plati.getSelectedItem();
+				objMesas = (mesas)cbxMesas.getSelectedItem();
+				objBebida = (alimentos)Bebidas.getSelectedItem();
+				objComida = (alimentos)Platillo.getSelectedItem();
+				
+				String comida = objComida.getDescription();
+				int mesaAtendida = objMesas.getClave();
+				JOptionPane.showMessageDialog(null, "Comida "+ comida + " de la mesa "+mesaAtendida);
+				spinnerComida.setValue(0);
+				spinnerBebida.setValue(0);
 			}
 		});
+		btnEnviar.setBounds(151, 350, 98, 29);
+		add(btnEnviar);
 		
-		
-		btnAgregar.setBounds(340, 117, 89, 23);
-		add(btnAgregar);
-		
-		
-		JButton btnAgregarbeb = new JButton("Agregar");
-		btnAgregarbeb.addActionListener(new ActionListener() {
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				objBebida =(Pedidos) Bebi.getSelectedItem();
+				spinnerComida.setValue(0);
+				spinnerBebida.setValue(0);
 			}
 		});
-		btnAgregarbeb.setBounds(340, 184, 89, 23);
-		add(btnAgregarbeb);
-	}
-
-
-
-
-
-	public Pedidos(String string, int i) {
-		// TODO Auto-generated constructor stub
+		btnCancelar.setBounds(347, 350, 98, 29);
+		add(btnCancelar);
+	
+	
 	}
 }
