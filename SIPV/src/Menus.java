@@ -74,6 +74,8 @@ public class Menus extends JFrame {
 		panelInicio.add(lblSeleccioneUnaDe);
 		
 		
+		Pedidos getPedido = new Pedidos();
+		Historial getHistorial = new Historial();
 	/*
 	 * Botones
 	 */
@@ -83,7 +85,7 @@ public class Menus extends JFrame {
 		btnPedidos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelInicio.setVisible(false);
-				Pedidos getPedido = new Pedidos();
+				getHistorial.setVisible(false);
 				contentPane.add(getPedido);
 				getPedido.setBounds(147, 6, 597, 410);
 				getPedido.setBackground(Color.WHITE);
@@ -92,8 +94,20 @@ public class Menus extends JFrame {
 		});
 		
 		JButton btnHistorial = new JButton("HIstorial");
+		btnHistorial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelInicio.setVisible(false);
+				getPedido.setVisible(false);
+				contentPane.add(getHistorial);
+				getHistorial.setBounds(147, 6, 597, 410);
+				getHistorial.setBackground(Color.WHITE);
+				getHistorial.setVisible(true);
+
+			}
+		});
 		btnHistorial.setBounds(6, 120, 129, 70);
 		contentPane.add(btnHistorial);
+		
 		
 		JButton btnAdmin = new JButton("Administration");
 		btnAdmin.setBounds(6, 223, 129, 70);

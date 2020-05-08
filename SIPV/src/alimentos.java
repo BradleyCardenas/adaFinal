@@ -3,10 +3,18 @@ public class alimentos {
 	
 	private String description;
 	private int precio;
+	private int cantidad;
+	
 	
 	public alimentos(String description, int precio) {
 		this.description = description;
 		this.precio = precio;
+	}
+	
+	public alimentos(String description, int precio, int cantidad) {
+		this.description = description;
+		this.precio = precio;
+		this.cantidad = cantidad;
 	}
 	
 	public String getDescription() {
@@ -25,7 +33,16 @@ public class alimentos {
 		this.precio = precio;
 	}
 	
-	public String getInicio() {
-		return this.description = "Seleccione uno";
+	public int getCantidad() {
+		return cantidad;
 	}
+	
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+	
+	@Override
+	  public String toString() {
+	  return this.description;
+	  }
 }

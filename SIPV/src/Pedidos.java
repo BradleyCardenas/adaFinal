@@ -14,25 +14,16 @@ import javax.swing.ImageIcon;
 
 public class Pedidos extends JPanel {
 
-	/*
-	 * Seccion de las bebidas
-	 */
 	
-	alimentos[] arreBebidas = new alimentos[] {
+	alimentos[] arreBebidas = new alimentos[] { // Seccion de las bebidas
 			new alimentos("Seleccione uno", 0),
 			new alimentos("Coca Cola", 15),
 			new alimentos("SevenUp",15),
 			new alimentos("Manzanita",16),
 			new alimentos("Mirinda", 14)
 	};
-	
-	alimentos objBebida;
-	
-	/*
-	 * Seccion de la comida
-	 */
-	
-	alimentos[] arreComidas = new alimentos[] {
+
+	alimentos[] arreComidas = new alimentos[] { //Seccion de la comida
 			new alimentos("Seleccione uno", 0),
 			new alimentos("Sopa Nissin", 20),
 			new alimentos("Filete de pescado",90),
@@ -40,12 +31,7 @@ public class Pedidos extends JPanel {
 			new alimentos("Pozole", 20)
 	};
 	
-	alimentos objComida;
-	
-	/*
-	 * Seccion mesas
-	 */
-	mesas[] estudio = new mesas[] {
+	mesas[] estudio = new mesas[] { //Seccion mesas
 			new mesas(1),
 			new mesas(2),
 			new mesas(3),
@@ -54,9 +40,6 @@ public class Pedidos extends JPanel {
 			new mesas(6),
 			new mesas(7)
 	};
-	
-	mesas objMesas;
-	
 	
 	public Pedidos() {
 		
@@ -107,21 +90,21 @@ public class Pedidos extends JPanel {
 		cbxMesas.setBounds(442, 249, 106, 37);
 		add(cbxMesas);
 		for (int i=0; i<estudio.length; i++)
-			cbxMesas.addItem(estudio[i].getClave());
+			cbxMesas.addItem(estudio[i]);
 		
 		//Seccion comida
 		JComboBox Platillo = new JComboBox();
 		Platillo.setBounds(63, 187, 215, 22);
 		add(Platillo);
 		for (int i=0; i <arreComidas.length; i++)
-			Platillo.addItem(arreComidas[i].getDescription());
+			Platillo.addItem(arreComidas[i]);
 			
 		//Seccon bebidas
 		JComboBox Bebidas = new JComboBox();
 		Bebidas.setBounds(63, 276, 215, 22);
 		add(Bebidas);
 		for (int i=0; i <arreBebidas.length; i++)
-		     Bebidas.addItem(arreBebidas[i].getDescription());
+		     Bebidas.addItem(arreBebidas[i]);
 
 		/*
 		 * Botones
@@ -129,15 +112,49 @@ public class Pedidos extends JPanel {
 		JButton btnEnviar = new JButton("Enviar");
 		btnEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				objMesas = (mesas)cbxMesas.getSelectedItem();
-				objBebida = (alimentos)Bebidas.getSelectedItem();
-				objComida = (alimentos)Platillo.getSelectedItem();
 				
-				String comida = objComida.getDescription();
-				int mesaAtendida = objMesas.getClave();
-				JOptionPane.showMessageDialog(null, "Comida "+ comida + " de la mesa "+mesaAtendida);
+				alimentos[] platos = new alimentos[5];
+				
+				alimentos objBebida = (alimentos)Bebidas.getSelectedItem();
+				alimentos objComida = (alimentos)Platillo.getSelectedItem();
+				mesas objMesaElegida = (mesas)cbxMesas.getSelectedItem();
+				int cantidadComida = (Integer)spinnerComida.getValue();
+				int cantidadBebida = (Integer)spinnerBebida.getValue();
+				
+				for(int i=0; i<estudio.length; i++) {
+					if(objMesaElegida.getClave() == estudio[i].getClave()) {
+						platos = estudio[i].getPedidosMesa();
+						
+						for(int j=0; j<platos.length; j++) {
+							if(platos[j] == null) {
+								platos[j] = new alimentos(objComida.getDescription(),objComida.getPrecio(), cantidadComida);
+							} 
+						}
+						estudio[i].setPedidosMesa(platos);
+						for(int j=0; j<platos.length; j++) {
+							if(platos[j] == null) {
+								platos[j] = new alimentos(objBebida.getDescription(),objBebida.getPrecio(), cantidadBebida);
+							} 
+						}
+						i++;
+						estudio[i].setPedidosMesa(platos);
+					} 
+				};
+				
+				for(int i=0; i<estudio.length; i++) {
+					if(objMesaElegida.getClave() == estudio[i].getClave()) {
+						JOptionPane.showMessageDialog(null, "La comida de la mesa "+estudio[i].getClave()+" es "+estudio[i].getPedidosMesa(i).getDescription()+" con "+estudio[i].getPedidosMesa(i).getCantidad()+" pedidos");
+					}
+				}
+				for(int i=0; i<estudio.length; i++) {
+					if(objMesaElegida.getClave() == estudio[i].getClave()) {
+						JOptionPane.showMessageDialog(null, "La bebida de la mesa "+estudio[i].getClave()+" es "+estudio[i].getPedidosMesa(i).getDescription()+" con "+estudio[i].getPedidosMesa(i).getCantidad()+" pedidos");
+					}
+				}
 				spinnerComida.setValue(0);
 				spinnerBebida.setValue(0);
+				Bebidas.setSelectedIndex(0);
+				Platillo.setSelectedIndex(0);
 			}
 		});
 		btnEnviar.setBounds(151, 350, 98, 29);
