@@ -1,25 +1,27 @@
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JTable;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import javax.swing.border.LineBorder;
 
 public class Historial extends JPanel {
-
-	private JTable table;
-
 	
 	mesas[] arrayMesas = new mesas[7]; 
 	mesas[] arrayEstudio = new mesas[] {
@@ -45,16 +47,18 @@ public class Historial extends JPanel {
 	
 	JButton btnTotal = new JButton("Total");
 	JButton btnMostrarPedidos= new JButton("Mostrar Pedidos");
+	JButton btnCobrar = new JButton("Cobrar");
+	
 	
 	public Historial() {
 		
 		setBackground(Color.GRAY);
 		setLayout(null);
 		
-		
 		/* Configuraciones de los elementos */
+		tablaTotal.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
-		tablaTotal.setBounds(41, 194, 356, 127);
+		tablaTotal.setBounds(66, 188, 311, 127);
 		add(tablaTotal);
 		
 		
@@ -84,19 +88,21 @@ public class Historial extends JPanel {
 		
 		btnTotal.setBounds(66, 340, 117, 29);
 		add(btnTotal);
-		btnTotal.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				imprimirTotal();
-			}
-		});
 		
-		add(btnMostrarPedidos);
-		btnMostrarPedidos.addActionListener(new ActionListener() {
+		btnCobrar.setBounds(439, 329, 117, 50);
+		add(btnCobrar);
+		btnCobrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
 		
+		btnTotal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				imprimirTotal();
+			}
+		});
+					
 		
 	}// fin main Historial
 
@@ -104,19 +110,39 @@ public class Historial extends JPanel {
 		mesas objMesaElegida = (mesas)cbxMesas.getSelectedItem();
 		
 		int total = 0;
+		String datosMesa[][] = new String[arrayMesas.length][4]; 
 		
 		for(int i=0; i<arrayMesas.length; i++) {
 			if(objMesaElegida.getClave() == arrayMesas[i].getClave()) {
 				for(int j=0; j<arrayMesas.length; j++) {
-					if(arrayMesas[i].getPedidosMesa(j) != null) 
-						total = total + (arrayMesas[i].getPedidosMesa(j).getPrecio() * arrayMesas[i].getPedidosMesa(j).getCantidad());
+					if(arrayMesas[i].getPedidosMesa(j) != null) {
+						int sumaPedido = arrayMesas[i].getPedidosMesa(j).getPrecio() * arrayMesas[i].getPedidosMesa(j).getCantidad();
+						
+						datosMesa[j][0] = arrayMesas[i].getPedidosMesa(j).getDescription();
+						datosMesa[j][1] = Integer.toString(arrayMesas[i].getPedidosMesa(j).getCantidad());
+						datosMesa[j][2] = Integer.toString(arrayMesas[i].getPedidosMesa(j).getPrecio());
+						datosMesa[j][3] = Integer.toString(sumaPedido);
+						
+						total = total + sumaPedido;
+					}
 					else
 						break;
 				}
+				rellenarTabla(datosMesa);
 				textTotal.setText("El total ha sido $"+ total+" pesos");
 			}
 		}
 	}// fin imprimirTotal
+	
+	
+	public void rellenarTabla(String nombre[][]) {
+		tablaTotal.setModel(new javax.swing.table.DefaultTableModel(
+			nombre,
+			new String [] {
+					"Descripcion","Cantidad","Precio","Total"
+			}
+		));
+	}// fin rellenarTabla
 }
 
 

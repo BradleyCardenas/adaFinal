@@ -28,7 +28,7 @@ public class Pedidos extends JPanel {
 			new alimentos("Seleccione uno", 0),
 			new alimentos("Sopa Nissin", 20),
 			new alimentos("Filete de pescado",90),
-			new alimentos("Sopa fria",303),
+			new alimentos("Sopa fria",30),
 			new alimentos("Pozole", 20)
 	};
 	
