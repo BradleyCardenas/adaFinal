@@ -41,11 +41,10 @@ public class Historial extends JPanel {
 	
 	JComboBox cbxMesas = new JComboBox();
 	
-	JTextArea textArea = new JTextArea();
+	JTextArea textTotal = new JTextArea();
 	
 	JButton btnTotal = new JButton("Total");
-	JButton btnImprimir = new JButton("Imprimir");
-	
+	JButton btnMostrarPedidos= new JButton("Mostrar Pedidos");
 	
 	public Historial() {
 		
@@ -55,7 +54,7 @@ public class Historial extends JPanel {
 		
 		/* Configuraciones de los elementos */
 		
-		tablaTotal.setBounds(41, 167, 356, 154);
+		tablaTotal.setBounds(41, 194, 356, 127);
 		add(tablaTotal);
 		
 		
@@ -68,7 +67,7 @@ public class Historial extends JPanel {
 		add(lblNewLabel);
 		
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(58, 129, 197, 20);
+		lblNewLabel_1.setBounds(59, 129, 197, 20);
 		add(lblNewLabel_1);
 		
 		
@@ -77,8 +76,10 @@ public class Historial extends JPanel {
 		for (int i=0; i<arrayMesas.length; i++)
 			cbxMesas.addItem(arrayEstudio[i]);
 		
-		textArea.setBounds(195, 345, 133, 20);
-		add(textArea);
+		
+		textTotal.setBounds(195, 345, 220, 20);
+		add(textTotal);
+		textTotal.setEditable(false);
 		
 		
 		btnTotal.setBounds(66, 340, 117, 29);
@@ -89,8 +90,13 @@ public class Historial extends JPanel {
 			}
 		});
 		
-		btnImprimir.setBounds(359, 340, 117, 29);
-		add(btnImprimir);
+		add(btnMostrarPedidos);
+		btnMostrarPedidos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
 		
 	}// fin main Historial
 
@@ -107,12 +113,10 @@ public class Historial extends JPanel {
 					else
 						break;
 				}
-				JOptionPane.showMessageDialog(null, "El total de la mesa "+objMesaElegida.getClave()+" ha sido $"+ total+" pesos");
+				textTotal.setText("El total ha sido $"+ total+" pesos");
 			}
 		}
 	}// fin imprimirTotal
-	
-
 }
 
 
