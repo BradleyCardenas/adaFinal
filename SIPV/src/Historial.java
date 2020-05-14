@@ -1,6 +1,8 @@
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.ImageIcon;
@@ -8,12 +10,19 @@ import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class Historial extends JPanel {
-	
+
 	private JTable table;
+
 	
-	mesas[] estudio = new mesas[] { //Seccion mesas
+	mesas[] arrayMesas = new mesas[7]; 
+	mesas[] arrayEstudio = new mesas[] {
 			new mesas(1),
 			new mesas(2),
 			new mesas(3),
@@ -23,44 +32,87 @@ public class Historial extends JPanel {
 			new mesas(7)
 	};
 	
+	/* Creacion de los elementos */
+	JTable tablaTotal = new JTable();
+	
+	JLabel lblHistorial = new JLabel("Historial ");
+	JLabel lblNewLabel = new JLabel("");
+	JLabel lblNewLabel_1 = new JLabel("Pedido de la mesa:");
+	
+	JComboBox cbxMesas = new JComboBox();
+	
+	JTextArea textArea = new JTextArea();
+	
+	JButton btnTotal = new JButton("Total");
+	JButton btnImprimir = new JButton("Imprimir");
+	
 	
 	public Historial() {
+		
 		setBackground(Color.GRAY);
 		setLayout(null);
 		
-		JLabel lblHistorial = new JLabel("Historial ");
+		
+		/* Configuraciones de los elementos */
+		
+		tablaTotal.setBounds(41, 167, 356, 154);
+		add(tablaTotal);
+		
+		
 		lblHistorial.setBounds(41, 55, 175, 38);
 		lblHistorial.setFont(new Font("Arial Hebrew Scholar", Font.BOLD, 35));
 		add(lblHistorial);
 		
-		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("/Users/bradleycardenas/git/adaFinal/recursos/cuenta.png"));
 		lblNewLabel.setBounds(405, 6, 175, 207);
 		add(lblNewLabel);
 		
-		table = new JTable();
-		table.setBounds(41, 167, 356, 154);
-		add(table);
-		
-		JLabel lblNewLabel_1 = new JLabel("Pedido de la mesa:");
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		lblNewLabel_1.setBounds(58, 129, 197, 20);
 		add(lblNewLabel_1);
 		
-		JComboBox cbxMesas = new JComboBox();
+		
 		cbxMesas.setBounds(247, 128, 127, 27);
 		add(cbxMesas);
-		for (int i=0; i<estudio.length; i++)
-			cbxMesas.addItem(estudio[i]);
+		for (int i=0; i<arrayMesas.length; i++)
+			cbxMesas.addItem(arrayEstudio[i]);
 		
-		JLabel lblNewLabel_2 = new JLabel("Total:");
-		lblNewLabel_2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		lblNewLabel_2.setBounds(123, 348, 63, 16);
-		add(lblNewLabel_2);
-		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(183, 345, 133, 20);
+		textArea.setBounds(195, 345, 133, 20);
 		add(textArea);
 		
-	}
+		
+		btnTotal.setBounds(66, 340, 117, 29);
+		add(btnTotal);
+		btnTotal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				imprimirTotal();
+			}
+		});
+		
+		btnImprimir.setBounds(359, 340, 117, 29);
+		add(btnImprimir);
+		
+	}// fin main Historial
+
+	public void imprimirTotal() {
+		mesas objMesaElegida = (mesas)cbxMesas.getSelectedItem();
+		
+		int total = 0;
+		
+		for(int i=0; i<arrayMesas.length; i++) {
+			if(objMesaElegida.getClave() == arrayMesas[i].getClave()) {
+				for(int j=0; j<arrayMesas.length; j++) {
+					if(arrayMesas[i].getPedidosMesa(j) != null) 
+						total = total + (arrayMesas[i].getPedidosMesa(j).getPrecio() * arrayMesas[i].getPedidosMesa(j).getCantidad());
+					else
+						break;
+				}
+				JOptionPane.showMessageDialog(null, "El total de la mesa "+objMesaElegida.getClave()+" ha sido $"+ total+" pesos");
+			}
+		}
+	}// fin imprimirTotal
+	
+
 }
+
+

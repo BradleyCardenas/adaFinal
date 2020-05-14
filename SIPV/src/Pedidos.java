@@ -14,8 +14,9 @@ import javax.swing.ImageIcon;
 
 public class Pedidos extends JPanel {
 
+	/* Creacion de arreglos */
 	
-	alimentos[] arreBebidas = new alimentos[] { // Seccion de las bebidas
+	alimentos[] arrayBebidas = new alimentos[] { 
 			new alimentos("Seleccione uno", 0),
 			new alimentos("Coca Cola", 15),
 			new alimentos("SevenUp",15),
@@ -23,7 +24,7 @@ public class Pedidos extends JPanel {
 			new alimentos("Mirinda", 14)
 	};
 
-	alimentos[] arreComidas = new alimentos[] { //Seccion de la comida
+	alimentos[] arrayComidas = new alimentos[] { 
 			new alimentos("Seleccione uno", 0),
 			new alimentos("Sopa Nissin", 20),
 			new alimentos("Filete de pescado",90),
@@ -31,7 +32,7 @@ public class Pedidos extends JPanel {
 			new alimentos("Pozole", 20)
 	};
 	
-	mesas[] estudio = new mesas[] { //Seccion mesas
+	mesas[] arrayMesas = new mesas[] { 
 			new mesas(1),
 			new mesas(2),
 			new mesas(3),
@@ -41,135 +42,170 @@ public class Pedidos extends JPanel {
 			new mesas(7)
 	};
 	
+	
+	/* Creacion de objetos */
+	JPanel Pedidos = new JPanel();
+	Historial panelHistorial = new Historial();
+	alimentos[] platos = new alimentos[5];
+	
+	JLabel lblNewLabel = new JLabel("Lista De Pedidos");
+	JLabel lblNewLabel_1 = new JLabel("Platillos");
+	JLabel lblNewLabel_2 = new JLabel("");
+	JLabel lblBebidas = new JLabel("Bebidas");
+	JLabel lblMesaAAtender = new JLabel("Mesa a atender");
+	
+	JSpinner spinnerComida = new JSpinner();
+	JSpinner spinnerBebida = new JSpinner();
+	
+	JComboBox cbxMesas = new JComboBox();
+	JComboBox cbxPlatillo = new JComboBox();
+	JComboBox cbxBebidas = new JComboBox();
+	
+	JButton btnEnviar = new JButton("Solicitar");
+	JButton btnCancelar = new JButton("Cancelar");
+	
+	alimentos objBebida = (alimentos)cbxBebidas.getSelectedItem();
+	alimentos objComida = (alimentos)cbxPlatillo.getSelectedItem();
+	mesas objMesaElegida = (mesas)cbxMesas.getSelectedItem();
+	int cantidadComida = (Integer)spinnerComida.getValue();
+	int cantidadBebida = (Integer)spinnerBebida.getValue();
+	
 	public Pedidos() {
 		
-		/*
-		 * Elementos del Panel
-		 */
-		JPanel Pedidos = new JPanel();
+		/* Configuraciones */
+		
 		Pedidos.setBackground(Color.WHITE);
 		Pedidos.setBounds(147, 6, 597, 410);
 		Pedidos.setLayout(null);
 		setLayout(null);
 		
-		JSpinner spinnerComida = new JSpinner();
-		spinnerComida.setBounds(320, 183, 67, 29);
-		add(spinnerComida);
 		
-		JSpinner spinnerBebida = new JSpinner();
-		spinnerBebida.setBounds(320, 272, 67, 29);
-		add(spinnerBebida);
-		
-		JLabel lblNewLabel = new JLabel("Lista De Pedidos");
 		lblNewLabel.setBounds(33, 44, 333, 61);
 		lblNewLabel.setFont(new Font("Arial Hebrew Scholar", Font.BOLD, 35));
 		add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Platillos");
 		lblNewLabel_1.setBounds(40, 154, 61, 21);
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon("/Users/bradleycardenas/git/adaFinal/recursos/waiters2.png"));
 		lblNewLabel_2.setBounds(378, 10, 196, 165);
 		add(lblNewLabel_2);
 		
-		JLabel lblBebidas = new JLabel("Bebidas");
 		lblBebidas.setBounds(40, 243, 61, 21);
 		lblBebidas.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		add(lblBebidas);
 		
-		JLabel lblMesaAAtender = new JLabel("Mesa a atender");
 		lblMesaAAtender.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		lblMesaAAtender.setBounds(442, 216, 119, 37);
 		add(lblMesaAAtender);
 		
 		
-		JComboBox cbxMesas = new JComboBox();
+		spinnerComida.setBounds(320, 183, 67, 29);
+		add(spinnerComida);
+		
+		spinnerBebida.setBounds(320, 272, 67, 29);
+		add(spinnerBebida);
+		
+		
 		cbxMesas.setBounds(442, 249, 106, 37);
 		add(cbxMesas);
-		for (int i=0; i<estudio.length; i++)
-			cbxMesas.addItem(estudio[i]);
+		for (int i=0; i<arrayMesas.length; i++)
+			cbxMesas.addItem(arrayMesas[i]);
 		
-		//Seccion comida
-		JComboBox Platillo = new JComboBox();
-		Platillo.setBounds(63, 187, 215, 22);
-		add(Platillo);
-		for (int i=0; i <arreComidas.length; i++)
-			Platillo.addItem(arreComidas[i]);
+		cbxPlatillo.setBounds(63, 187, 215, 22);
+		add(cbxPlatillo);
+		for (int i=0; i <arrayComidas.length; i++)
+			cbxPlatillo.addItem(arrayComidas[i]);
 			
-		//Seccon bebidas
-		JComboBox Bebidas = new JComboBox();
-		Bebidas.setBounds(63, 276, 215, 22);
-		add(Bebidas);
-		for (int i=0; i <arreBebidas.length; i++)
-		     Bebidas.addItem(arreBebidas[i]);
+		cbxBebidas.setBounds(63, 276, 215, 22);
+		add(cbxBebidas);
+		for (int i=0; i <arrayBebidas.length; i++)
+		     cbxBebidas.addItem(arrayBebidas[i]);
 
-		/*
-		 * Botones
-		 */
-		JButton btnEnviar = new JButton("Enviar");
-		btnEnviar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				alimentos[] platos = new alimentos[5];
-				
-				alimentos objBebida = (alimentos)Bebidas.getSelectedItem();
-				alimentos objComida = (alimentos)Platillo.getSelectedItem();
-				mesas objMesaElegida = (mesas)cbxMesas.getSelectedItem();
-				int cantidadComida = (Integer)spinnerComida.getValue();
-				int cantidadBebida = (Integer)spinnerBebida.getValue();
-				
-				for(int i=0; i<estudio.length; i++) {
-					if(objMesaElegida.getClave() == estudio[i].getClave()) {
-						platos = estudio[i].getPedidosMesa();
-						
-						for(int j=0; j<platos.length; j++) {
-							if(platos[j] == null) {
-								platos[j] = new alimentos(objComida.getDescription(),objComida.getPrecio(), cantidadComida);
-							} 
-						}
-						estudio[i].setPedidosMesa(platos);
-						for(int j=0; j<platos.length; j++) {
-							if(platos[j] == null) {
-								platos[j] = new alimentos(objBebida.getDescription(),objBebida.getPrecio(), cantidadBebida);
-							} 
-						}
-						i++;
-						estudio[i].setPedidosMesa(platos);
-					} 
-				};
-				
-				for(int i=0; i<estudio.length; i++) {
-					if(objMesaElegida.getClave() == estudio[i].getClave()) {
-						JOptionPane.showMessageDialog(null, "La comida de la mesa "+estudio[i].getClave()+" es "+estudio[i].getPedidosMesa(i).getDescription()+" con "+estudio[i].getPedidosMesa(i).getCantidad()+" pedidos");
-					}
-				}
-				for(int i=0; i<estudio.length; i++) {
-					if(objMesaElegida.getClave() == estudio[i].getClave()) {
-						JOptionPane.showMessageDialog(null, "La bebida de la mesa "+estudio[i].getClave()+" es "+estudio[i].getPedidosMesa(i).getDescription()+" con "+estudio[i].getPedidosMesa(i).getCantidad()+" pedidos");
-					}
-				}
-				spinnerComida.setValue(0);
-				spinnerBebida.setValue(0);
-				Bebidas.setSelectedIndex(0);
-				Platillo.setSelectedIndex(0);
-			}
-		});
+		
 		btnEnviar.setBounds(151, 350, 98, 29);
 		add(btnEnviar);
-		
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.addActionListener(new ActionListener() {
+		btnEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				spinnerComida.setValue(0);
-				spinnerBebida.setValue(0);
+				solicitar();
+				imprimirPedidos();
+				resetElements();
 			}
 		});
+		
 		btnCancelar.setBounds(347, 350, 98, 29);
 		add(btnCancelar);
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				resetElements();
+			}
+		});
+	
+		
+	}/* fin main Pedidos */
 	
 	
-	}
+	public void resetElements() {
+		spinnerComida.setValue(0);
+		spinnerBebida.setValue(0);
+		cbxBebidas.setSelectedIndex(0);
+		cbxPlatillo.setSelectedIndex(0);
+	}//fin resetElements
+	
+	public void guardarBebida() {
+		alimentos objBebida = (alimentos)cbxBebidas.getSelectedItem();
+		int cantidadBebida = (Integer)spinnerBebida.getValue();
+		
+		for(int h=0; h<platos.length; h++) {
+			if(platos[h] == null) {
+				platos[h] = new alimentos(objBebida.getDescription(),objBebida.getPrecio(), cantidadBebida);
+				break;
+			}
+		}
+	}//fin guardarBebida
+	
+	public void guardarComida() {
+		alimentos objComida = (alimentos)cbxPlatillo.getSelectedItem();
+		int cantidadComida = (Integer)spinnerComida.getValue();
+		
+		for(int j=0; j<platos.length; j++) {
+			if(platos[j] == null) {
+				platos[j] = new alimentos(objComida.getDescription(),objComida.getPrecio(), cantidadComida);
+				break;
+			} 
+		}
+	}//fin guardarComida
+	
+	public void imprimirPedidos() {
+		mesas objMesaElegida = (mesas)cbxMesas.getSelectedItem();
+		
+		for(int i=0; i<arrayMesas.length; i++) {
+			if(objMesaElegida.getClave() == arrayMesas[i].getClave()) {
+				for(int j=0; j<platos.length;j++) {
+					if(platos[j] != null) {
+						JOptionPane.showMessageDialog(null, "El pedido de la mesa "+arrayMesas[i].getClave()+" ha sido "+arrayMesas[i].getPedidosMesa(j).getCantidad()+" de " +arrayMesas[i].getPedidosMesa(j).getDescription());
+					}
+				}	
+			}
+		}
+	}//fin imprimirPedidos
+	
+	public void solicitar() {
+		mesas objMesaElegida = (mesas)cbxMesas.getSelectedItem();
+		
+		for(int i=0; i<arrayMesas.length; i++) {
+			if(objMesaElegida.getClave() == arrayMesas[i].getClave()) {
+				platos = arrayMesas[i].getPedidosMesa();
+				
+				guardarComida();
+				arrayMesas[i].setPedidosMesa(platos);
+				
+				guardarBebida();
+				arrayMesas[i].setPedidosMesa(platos);
+			} 
+		};
+	}//fin solicitar
+	
+	
 }

@@ -100,10 +100,7 @@ public class Login extends JFrame {
 		
 		
 	}
-
-	/**
-	 * Funciones extra
-	*/
+	
 	private void iniciarLogin() {
 		String User = textUsuario.getText();
 		char[] passC = passwordField.getPassword();
