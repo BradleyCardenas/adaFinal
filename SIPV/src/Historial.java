@@ -86,10 +86,10 @@ public class Historial extends JPanel {
 		textTotal.setEditable(false);
 		
 		
-		btnTotal.setBounds(66, 340, 117, 29);
+		btnTotal.setBounds(66, 335, 117, 39);
 		add(btnTotal);
 		
-		btnCobrar.setBounds(439, 329, 117, 50);
+		btnCobrar.setBounds(439, 335, 117, 38);
 		add(btnCobrar);
 		btnCobrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
